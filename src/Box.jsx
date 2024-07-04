@@ -8,7 +8,7 @@ export function Box(props) {
     //state is underscore, we put this because we're not using it
     ref.current.rotation.x += 1 * delta;
     ref.current.rotation.y += 1 * delta;
-    ref.current.position.y = Math.sin(state.clock.getElapsedTime());
+    // ref.current.position.y = Math.sin(state.clock.getElapsedTime());
   });
 
   useEffect(() => {
@@ -16,7 +16,12 @@ export function Box(props) {
   });
 
   return (
-    <mesh {...props} ref={ref}>
+    <mesh
+      {...props}
+      ref={ref}
+      onPointerDown={(e) => console.log(e)}
+      onPointerUp={(e) => console.log("pointer up " + e.object.name)}
+    >
       <boxGeometry />
       <meshBasicMaterial color={0x00ff00} wireframe />
     </mesh>
