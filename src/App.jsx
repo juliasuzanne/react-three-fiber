@@ -3,23 +3,34 @@ import Polyhedron from "./Polyhedron";
 import * as THREE from "three";
 import { Stats, OrbitControls } from "@react-three/drei";
 
-export function App() {
-  const polyhedron = [
-    new THREE.BoxGeometry(),
-    new THREE.SphereGeometry(0.785398),
-    new THREE.DodecahedronGeometry(0.785398),
-  ];
-
+export default function App() {
   return (
-    <Canvas camera={{ position: [0, 0, 3] }}>
-      <Polyhedron position={[-0.75, -0.75, 0]} polyhedron={polyhedron} />
-      <Polyhedron position={[0.75, -0.75, 0]} polyhedron={polyhedron} />
-      <Polyhedron position={[-0.75, 0.75, 0]} polyhedron={polyhedron} />
-      <Polyhedron position={[0.75, 0.75, 0]} polyhedron={polyhedron} />
+    <Canvas camera={{ position: [-1, 4, 2.5] }}>
+      <directionalLight position={[1, 1, 1]} />
+      <Polyhedron
+        name="meshBasicMaterial"
+        position={[-3, 1, 0]}
+        material={new THREE.MeshBasicMaterial({ color: "red", flatShading: true })}
+      />
+      <Polyhedron
+        name="meshNormalMaterial"
+        position={[-1, 1, 0]}
+        material={new THREE.MeshNormalMaterial({ flatShading: true })}
+      />
+      <Polyhedron
+        name="meshPhongMaterial"
+        position={[1, 1, 0]}
+        material={new THREE.MeshPhongMaterial({ color: "red", flatShading: true })}
+      />
+      <Polyhedron
+        name="meshStandardMaterial"
+        position={[3, 1, 0]}
+        material={new THREE.MeshStandardMaterial({ color: "blue", flatShading: true })}
+      />
+      <OrbitControls target-y={1} />
+      <axesHelper args={[5]} />
+      <gridHelper />
       <Stats />
-      <OrbitControls />
-      <axesHelper args={[5, 5, 5]} />
-      <gridHelper rotation-x={Math.PI / 4} args={[20, 20]} />
     </Canvas>
   );
 }
