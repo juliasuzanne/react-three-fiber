@@ -5,8 +5,6 @@ export default function Polyhedron({ position, polyhedron }) {
   const ref = useRef();
   const [count, setCount] = useState(0);
 
-  console.log(polyhedron);
-
   useFrame((_, delta) => {
     ref.current.rotation.x += delta;
     ref.current.rotation.y += 0.5 * delta;
@@ -21,6 +19,7 @@ export default function Polyhedron({ position, polyhedron }) {
       }}
       geometry={polyhedron[count]}
     >
+      {/* <axesHelper args={[5, 5, 5]} /> */}
       <meshBasicMaterial color={"lime"} wireframe />
     </mesh>
   );

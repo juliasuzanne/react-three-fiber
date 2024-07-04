@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import Polyhedron from "./Polyhedron";
 import * as THREE from "three";
+import { Stats, OrbitControls } from "@react-three/drei";
 
 export function App() {
   const polyhedron = [
@@ -15,6 +16,10 @@ export function App() {
       <Polyhedron position={[0.75, -0.75, 0]} polyhedron={polyhedron} />
       <Polyhedron position={[-0.75, 0.75, 0]} polyhedron={polyhedron} />
       <Polyhedron position={[0.75, 0.75, 0]} polyhedron={polyhedron} />
+      <Stats />
+      <OrbitControls />
+      <axesHelper args={[5, 5, 5]} />
+      <gridHelper rotation-x={Math.PI / 4} args={[20, 20]} />
     </Canvas>
   );
 }
